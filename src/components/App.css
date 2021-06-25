@@ -1,9 +1,22 @@
 html, body {
-  background-color: #282c34;
-  color: rgb(196, 194, 194);
+  margin: 0;
+  padding: 0;
 }
 
-.App {
+body {
+  background-color: #025f6c;
+}
+
+.container {
+  color: #ffffff;
+  max-width: 1170px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page-title {
+  text-transform: uppercase;
   text-align: center;
+  font-size: 36px;
 }
-
