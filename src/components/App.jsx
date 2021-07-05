@@ -24,7 +24,6 @@ const App = () => {
 
         if (!coords.latitude && !coords.longitude) {
             setIsLoading(false);
-
             return;
         }
 
@@ -71,11 +70,7 @@ const App = () => {
                             <p className="page-sub-title">
                                 Weather for {userCity}
                             </p>
-                            <button
-                                className="button"
-                                type="button"
-                                onClick={() => setIsFormVisible(true)}
-                            >
+                            <button className="button button-style" type="button" onClick={() => setIsFormVisible(true)}>
                                 Change Location
                             </button>
                         </div>
@@ -87,7 +82,6 @@ const App = () => {
                         />
                     )
             }
-
             {weatherData && <WeatherCard weatherData={weatherData} />}
         </div>
     );

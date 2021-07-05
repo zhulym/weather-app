@@ -83,6 +83,11 @@ body {
   background-color: rgba(204, 143, 30, 0.5);
 }
 
+.input__city-form h6{
+  margin: 0;
+  padding: 0;
+}
+
 /* =========  WeatherCard  ========= */
 .weathercard__wrap{
   display: flex;
@@ -103,6 +108,7 @@ body {
     inset 0 -15px 30px rgba(0,0,0,0.3);
   min-width: 400px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .weathercard__info {
@@ -130,4 +136,16 @@ body {
   text-shadow: 0 0 10px rgb(255, 255, 255);
   margin-bottom: 15px;
   font-weight: 600;
+}
+
+.button-style{
+  background-color: rgba(161, 186, 233, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5),
+    inset 0 1px rgba(255,255,255,0.3),
+    inset 0 10px rgba(255,255,255,0.2),
+    inset 0 10px 20px rgba(255,255,255,0.25),
+    inset 0 -15px 30px rgba(0,0,0,0.3);
+  padding: 7px;
+  margin-bottom: 15px;
+  color: #fff;
 }

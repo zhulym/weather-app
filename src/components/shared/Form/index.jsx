@@ -64,6 +64,7 @@ const Form = ({ onSubmitCallback, closeFormCallback }) => {
         <form className="input__city-form" onSubmit={handleSubmit}>
             <label htmlFor="query">Hey, bro, let see the weather in your city!</label>
             <input id="query" type="text" name="query" placeholder="Please enter city" />
+            <h6>Here you can check historical or forecast weather!</h6>
             <DatePicker
                 className="asd"
                 selected={startDate}
