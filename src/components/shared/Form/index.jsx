@@ -1,37 +1,74 @@
 // libraries
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 // api
-import { getCurrentWeather } from '../../../api/weather';
+import { getHistoricalWeather, getForecastWeather, getCurrentWeather } from 'api/weather';
+// constants
+import { DATE_FORMATS } from 'constants/dates';
+// helpers
+import { formatDate, getCurrentDate, getDifference } from 'helpers/dates';
+// styles
+import 'react-datepicker/dist/react-datepicker.css';
 
-const Form = ({ onSubmitCallback }) => {
-    // useEffect(async () => {
-    //     const data = await getCurrentWeather({ query: 'Madrid' });
+const Form = ({ onSubmitCallback, closeFormCallback }) => {
+    const [startDate, setStartDate] = useState(new Date());
 
-    //     console.log(data);
-    // });
+    const getDateDiff = (now, date) => {
+        return getDifference(now, date, 'days');
+    };
+
+    const getMethodForWeather = () => {
+        const now = getCurrentDate().startOf('day');
+        const date = moment(startDate).startOf('day');
+
+        if (now > date) {
+            return [
+                getHistoricalWeather,
+                { historical_date: formatDate(date, DATE_FORMATS.dateForHistory) },
+            ];
+        }
+
+        if (now < date) {
+            return [
+                getForecastWeather,
+                { forecast_days: getDateDiff(now, date) },
+            ];
+        }
+
+        return [getCurrentWeather, {}];
+    };
 
     const handleSubmit = async event => {
         event.preventDefault();
 
-        const formData = {
-            [event.target.query.name]: event.target.query.value
-        };
-
+        getMethodForWeather(startDate);
         try {
-            const data = await getCurrentWeather(formData);
+            const formData = {
+                query: event.target.query.value,
+            };
 
-            if (onSubmitCallback) {
-                onSubmitCallback(data);
-            }
+            const [method, methodData] = getMethodForWeather(startDate) || [];
+
+            const data = await method({ ...formData, ...methodData });
+
+            onSubmitCallback(data);
         } catch (e) {
             console.error(e);
         }
+
+        closeFormCallback(false);
     };
 
     return (
         <form className="input__city-form" onSubmit={handleSubmit}>
             <label htmlFor="query">Hey, bro, let see the weather in your city!</label>
             <input id="query" type="text" name="query" placeholder="Please enter city" />
+            <DatePicker
+                className="asd"
+                selected={startDate}
+                onChange={date => setStartDate(date)}
+            />
             <input type="submit" value="Submit" />
         </form>
     );
