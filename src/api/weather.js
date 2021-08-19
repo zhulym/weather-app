@@ -1,12 +1,12 @@
 import { generateQueryString, sendRequest } from './index';
 
-export const getCurrentWeather  = data => {
+export const getCurrentWeather = data => {
     const queryString = generateQueryString(data);
 
     return sendRequest('/current', queryString);
 };
 
-export const getForecastWeather  = data => {
+export const getForecastWeather = data => {
     // const queryString = generateQueryString(data);
     //
     // return sendRequest('/forecast', queryString);
@@ -106,15 +106,15 @@ export const getForecastWeather  = data => {
                         chanceofthunder: 0,
                         uv_index: 0
                     },
-                    {   time: '300' },
-                    {   time: '600' },
+                    { time: '300' },
+                    { time: '600' },
                 ]
             }
         }
     };
 };
 
-export const getHistoricalWeather  = data => {
+export const getHistoricalWeather = data => {
     // const queryString = generateQueryString(data);
     //
     // return sendRequest('/historical', queryString);
@@ -141,7 +141,7 @@ export const getHistoricalWeather  = data => {
         },
         current: {
             observation_time: '02:05 PM',
-            temperature: 15,
+            temperature: 20,
             weather_code: 113,
             weather_icons: [
                 'https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png'
@@ -152,13 +152,13 @@ export const getHistoricalWeather  = data => {
             wind_speed: 0,
             wind_degree: 0,
             wind_dir: 'N',
-            pressure: 1011,
+            pressure: 1111,
             precip: 0,
-            humidity: 78,
+            humidity: 95,
             cloudcover: 0,
-            feelslike: 15,
-            uv_index: 5,
-            visibility: 16
+            feelslike: 18,
+            uv_index: 3,
+            visibility: 12
         },
         historical: {
             '2008-07-01': {
@@ -214,8 +214,8 @@ export const getHistoricalWeather  = data => {
                         chanceofthunder: 0,
                         uv_index: 6
                     },
-                    {   time: '300' },
-                    {   time: '600' },
+                    { time: '300' },
+                    { time: '600' },
                 ]
             }
         }
