@@ -1,5 +1,7 @@
-const baseUrl = process.env.REACT_APP_API_URL;
-const apiKey = process.env.REACT_APP_API_KEY;
+// const baseUrl = process.env.REACT_APP_API_URL;
+// const apiKey = process.env.REACT_APP_API_KEY;
+const baseUrl = 'http://api.weatherstack.com';
+const apiKey = '5d479d3903cd2a94298354f2a1e257f1';
 
 export const sendRequest = async (
     path,
